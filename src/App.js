@@ -1,27 +1,53 @@
 
-import {useState} from 'react'
+import { useState } from 'react'
 import './App.css'
-import Employee from './employee'
+
 function App() {
-  const [count,setCount]= useState(0)
-  const AddCount=()=>{
-    setCount(count+1)
-    console.log(count)
-  }
-  let employ=[{name:'yatin',age:21},{name:'amith',age:21},{name:'midhun',age:21},{name:'kichu',age:20}]
 
+  const [toDos, setToDos] = useState([])
+  const [toDo, setToDo] = useState('')
   return (
-    <div>
-      <button onClick={AddCount}>ADD</button>
-      {
-        employ.map((obj)=>{
-          return(
-            <Employee name={obj.name} age={obj.age} />)
-        })
-      }
-      
-    </div>
-  );
-}
 
+    <div className="app">
+      <div className="mainHeading">
+        <h1>ToDo List</h1>
+      </div>
+      <div className="subHeading">
+        <br />
+        <h2>Whoop, it's Wednesday 🌝 ☕ </h2>
+      </div>
+      <div className="input">
+        <input onChange={(e) => { setToDo(e.target.value) }} type="text" placeholder="🖊️ Add item..." />
+        <i onClick={() => { setToDos([...toDos, { id: Date.now, text: toDo, status: false }]) }} className="fas fa-plus"></i>
+      </div>
+      <div className="todos">
+        {toDos.map((obj) => {
+          return (
+            <div className="todo">
+              <div className="left">
+                <input value={obj.status}
+                  onChange={(e) => {
+                    console.log(e.target.checked)
+                    
+                    setToDos(toDos.filter(obj2=>{
+                      if(obj2.id===obj.id){
+                       obj2.status=e.target.checked
+                      }
+                      return obj2
+                    }))
+                    console.log(obj)
+                  }} type="checkbox" name="" id="" />
+                <p>{obj.text}</p>
+              </div>
+              <div className="right">
+                <i className="fas fa-times"></i>
+              </div>
+            </div>
+          )
+        })}
+      </div>
+    </div>
+
+  )
+}
 export default App;

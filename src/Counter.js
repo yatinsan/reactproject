@@ -1,9 +1,19 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 
 function Counter() {
+    const[count,setCount]= useState(0)
+useEffect(()=>{
+    console.log('mounding...')
+    console.log('updating..'+count)
+    return ()=>{
+        console.log('unmounding...')
+    }
+},[count])
+
     return (
         <div>
-            <h1>hello i am component</h1>
+            <button onClick={()=>{setCount(count+1)}}>increment</button>
+            <h1>count: {count}</h1>
         </div>
     )
 }
