@@ -88,3 +88,27 @@ h2 {
     font-style: normal;
     color: grey;
 }
+
+.acc {
+    margin-top: 0.8em;
+    width: 20em;
+    height: 2em;
+    background-color: rgb(130, 148, 27);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 6px;
+    padding: 5px;
+}
+
+.notacc {
+    margin-top: 0.8em;
+    width: 20em;
+    height: 2em;
+    background-color: rgb(163, 10, 10);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 6px;
+    padding: 5px;
+}
